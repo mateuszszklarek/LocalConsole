@@ -10,12 +10,15 @@ import SwiftUI
 
 var GLOBAL_BORDER_TRACKERS: [BorderManager] = []
 
+@objc
 @available(iOSApplicationExtension, unavailable)
 public class LCManager: NSObject, UIGestureRecognizerDelegate {
     
+    @objc
     public static let shared = LCManager()
     
     /// Set the font size. The font can be set to a minimum value of 5.0 and a maximum value of 20.0. The default value is 8.
+    @objc
     public var fontSize: CGFloat = 8 {
         didSet {
             guard fontSize >= 4 else { fontSize = 4; return }
@@ -406,6 +409,7 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
     
     // MARK: - Public
     
+    @objc
     public var isVisible = false {
         didSet {
             guard oldValue != isVisible else { return }
@@ -505,7 +509,9 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
+    
     /// Print items to the console view.
+    @objc
     public func print(_ items: Any) {
         if currentText == "" {
             currentText = "\(items)"
@@ -515,11 +521,13 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
     }
     
     /// Clear text in the console view.
+    @objc
     public func clear() {
         currentText = ""
     }
     
     /// Copy the console view text to the device's clipboard.
+    @objc
     public func copy() {
         UIPasteboard.general.string = consoleTextView.text
     }
